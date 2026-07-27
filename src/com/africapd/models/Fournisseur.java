@@ -1,3 +1,4 @@
+package com.africapd.models;
 public class Fournisseur extends Personne{
 
     public Fournisseur(){}

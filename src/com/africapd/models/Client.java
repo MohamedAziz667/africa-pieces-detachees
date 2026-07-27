@@ -1,3 +1,4 @@
+package com.africapd.models;
 public class Client extends Personne{
     private String adresse;
 

@@ -1,6 +1,7 @@
+package com.africapd.models;
 public class Personne {
-    private int id;
-    private String nom, prenom, numero;
+    protected int id;
+    protected String nom, prenom, numero;
 
     public int getId(){return id;}
     public String getNom(){return nom;}

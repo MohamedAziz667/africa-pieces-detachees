@@ -1,3 +1,4 @@
+package com.africapd.models;
 public class PieceDetachee{
     private String nom, reference;
     private int quantiteStock;
@@ -49,5 +50,10 @@ public class PieceDetachee{
 
     public String afficher(){
         return "Piece[Nom : " + getNom() + " | Reference : " + getReference() + " | Prix : " + getPrix() + " | Quantite : " + getQuantiteStock() + "]";
+    }
+
+    @Override
+    public String toString(){
+        return getNom();
     }
 }
