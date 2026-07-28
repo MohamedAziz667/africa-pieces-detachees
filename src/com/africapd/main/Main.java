@@ -5,6 +5,7 @@ import com.africapd.models.*;
 import com.africapd.config.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.SQLException;
+import com.africapd.dao.ClientDAO;
 public class Main {
     public static void main(String[] args) {
         // 1. Créer un client
@@ -26,6 +27,10 @@ public class Main {
         Facture facture1 = new Facture(01, LocalDate.now(), vente1);
         facture1.genererFacture();
 
+        ClientDAO clientDAO = new ClientDAO();
+        clientDAO.ajouterClient(client1);
+        System.out.println("Client ajouté avec succès !");
+
         try {
             Connection conn = DatabaseConnection.getConnection();
             System.out.println("Connexion réussi");
@@ -33,5 +38,5 @@ public class Main {
         } catch (Exception e) {
            System.out.println("Erreur : " + e.getMessage());
         }
-    }
+    }  
 }
