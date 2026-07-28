@@ -2,8 +2,9 @@ CREATE TABLE CLIENT(
     id_client int AUTO_INCREMENT PRIMARY KEY,
     nom_client varchar(50) NOT NULL,
     prenom_client varchar(50) NOT NULL,
-    email_client varchar(50) NOT NULL UNIQUE,
-    contact_client varchar(50) NOT NULL
+    email_client varchar(50) UNIQUE,
+    contact_client varchar(50) NOT NULL,
+    adresse_client varchar(50) NOT NULL
 );
 
 CREATE TABLE PIECE_DETACHEE(
@@ -32,7 +33,7 @@ CREATE TABLE VENTE_PIECE(
     fk_id_vente int,
     fk_id_piece int,
     quantite int NOT NULL,
-    prix_u DECIMAL(10, 2) NOT NULL,
+    prix_unitaire DECIMAL(10, 2) NOT NULL,
     PRIMARY KEY(fk_id_vente, fk_id_piece),
     FOREIGN KEY(fk_id_vente) REFERENCES VENTE(id_vente),
     FOREIGN KEY(fk_id_piece) REFERENCES PIECE_DETACHEE(id_piece)

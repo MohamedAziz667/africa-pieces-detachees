@@ -5,7 +5,7 @@ import com.africapd.models.*;
 public class Main {
     public static void main(String[] args) {
         // 1. Créer un client
-Client client1 = new Client(1, "Amadou", "Diallo", "771234567", "Dakar");
+Client client1 = new Client(1, "Amadou", "Diallo", "771234567", "Dakar", "");
 
 // 2. Créer une vente
 Vente vente1 = new Vente(1, LocalDate.now(), client1);
