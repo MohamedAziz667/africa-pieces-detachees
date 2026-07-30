@@ -1,8 +1,10 @@
 package com.africapd.models;
 public class PieceDetachee{
     private String nom, reference;
-    private int quantiteStock;
+    private int id, quantiteStock;
     private double prix;
+
+    public int getId(){return id;}
 
     public String getNom(){return nom;}
 
@@ -11,6 +13,10 @@ public class PieceDetachee{
     public int getQuantiteStock(){return quantiteStock;}
 
     public double getPrix(){return prix;}
+
+    public void setId(int c_id){
+        if (c_id > 0) {id = c_id;}
+    }
 
     public void setNom(String v_nom){
         if(v_nom != null){
@@ -47,6 +53,8 @@ public class PieceDetachee{
         setNom(v_nom);
         setReference(v_reference);
     }
+
+    public PieceDetachee(){}
 
     public String afficher(){
         return "Piece[Nom : " + getNom() + " | Reference : " + getReference() + " | Prix : " + getPrix() + " | Quantite : " + getQuantiteStock() + "]";
