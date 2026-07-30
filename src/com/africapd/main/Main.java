@@ -6,6 +6,7 @@ import com.africapd.config.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.SQLException;
 import com.africapd.dao.ClientDAO;
+import com.africapd.dao.PieceDetacheeDAO;
 public class Main {
     public static void main(String[] args) {
         // 1. Créer un client
@@ -36,13 +37,18 @@ public class Main {
         // clientDAO.modifierClient(client1);
         // System.out.println("Client modifié !");
 
-        clientDAO.supprimerClient(1);
-        System.out.println("Client supprimer");
-        Client clientsup = clientDAO.rechercherClient(1);
-        System.out.println(clientsup);
+        // clientDAO.supprimerClient(1);
+        // System.out.println("Client supprimer");
+        // Client clientsup = clientDAO.rechercherClient(1);
+        // System.out.println(clientsup);
         
-        Client clientModifier = clientDAO.rechercherClient(1);
-        System.out.println(clientModifier);
+        // Client clientModifier = clientDAO.rechercherClient(1);
+        // System.out.println(clientModifier);
+
+        PieceDetacheeDAO pieceDAO = new PieceDetacheeDAO();
+        pieceDAO.ajouterPiece(amortisseur);
+        PieceDetachee pieceTrouvee = pieceDAO.rechercherPiece(1);
+        System.out.println(pieceTrouvee);
 
         try {
             Connection conn = DatabaseConnection.getConnection();
