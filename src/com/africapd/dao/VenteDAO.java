@@ -32,12 +32,36 @@ public class VenteDAO {
                 
                 String requete = "INSERT INTO VENTE_PIECE(fk_id_vente, fk_id_piece, quantite, prix_unitaire) VALUES(?, ?, ?, ?)";
                 PreparedStatement stmt1 = conn.prepareStatement(requete);
+                String requeteStock = """
+                    UPDATE PIECE_DETACHEE
+                    SET quantite_stock = quantite_stock - ?
+                    WHERE id_piece = ?
+                    AND quantite_stock >= ?
+                    """;
+
+                PreparedStatement stmtStock = conn.prepareStatement(requeteStock);
                 for (VentePiece vp : vente.getligneVente()) {
+                    stmtStock.setInt(1, vp.getQuantite());
+                    stmtStock.setInt(2, vp.getPiece().getId());
+                    stmtStock.setInt(3, vp.getQuantite());
+
+                    int ligneStock = stmtStock.executeUpdate();
+
+                    if (ligneStock != 1) {
+                        throw new Exception(
+                            "Stock insuffisant pour la pièce ID : "
+                            + vp.getPiece().getId() +
+                            "Nom : " + vp.getPiece().getNom() +
+                            "Quantité : " + vp.getQuantite()
+                        );
+                    }else{
                     stmt1.setInt(1, idVente);
                     stmt1.setInt(2, vp.getPiece().getId());
                     stmt1.setInt(3, vp.getQuantite());
                     stmt1.setDouble(4, vp.getprixUnitaire());
                     stmt1.executeUpdate();
+                    }
+
                 }
             }else{
                 throw new Exception("Impossible de récupérer l'ID de la vente généré");
@@ -51,6 +75,7 @@ public class VenteDAO {
                     System.err.println("Erreur : " + ex.getMessage());
                 }
             }
+            vente.setIdVente(0);
             System.err.println("Erreur : " + e.getMessage());
         } finally{
             if (conn != null) {

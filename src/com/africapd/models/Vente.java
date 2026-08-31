@@ -13,7 +13,7 @@ public class Vente {
     public ArrayList<VentePiece> getligneVente(){return ligneVente;}
 
     public void setIdVente(int c_idVente){
-        if (c_idVente > 0) {idVente = c_idVente;}
+        if (c_idVente >= 0) {idVente = c_idVente;}
     }
 
     public void setDateVente(LocalDate c_dateVente){dateVente = c_dateVente;}

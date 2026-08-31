@@ -30,11 +30,11 @@ public class Main {
 
         Client nouveauClient = new Client(
                 0,
-                "Amadou",
-                "Diallo",
-                "771234567",
-                "Dakar",
-                "amdu@gmail.com"
+                "Ndoye",
+                "Fall",
+                "703221012",
+                "dakar",
+                "ndoyefall@gmail.com"
         );
 
         int ligneClient = clientDAO.ajouterClient(nouveauClient);
@@ -197,7 +197,7 @@ public class Main {
 
         VentePiece ventePiece2 = new VentePiece(
                 piece2,
-                3,
+                1,
                 12000
         );
 
