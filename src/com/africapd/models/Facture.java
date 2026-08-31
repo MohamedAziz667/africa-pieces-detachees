@@ -10,7 +10,7 @@ public class Facture {
     public Vente getVente(){return vente;}
 
     public void setIdFacture(int c_idFacture){
-        if (c_idFacture > 0) {idFacture = c_idFacture;}
+        if (c_idFacture >= 0) {idFacture = c_idFacture;}
     }
 
     public void setDateFacture(LocalDate c_dateFacture){dateFacture = c_dateFacture;}
@@ -26,25 +26,30 @@ public class Facture {
         setVente(c_vente);
     }
 
-    public void genererFacture(){
-        System.out.println("=========================================");
-        System.out.println("AFRICA PIÈCES DÉTACHÉES");
-        System.out.println("Votre spécialiste automobile");
-        System.out.println("═════════════════════════════════════════════");
-        System.out.println("Facture N° : " + getIdFacture());
-        System.out.println("Date     : " + getDateFacture());
-        System.out.println("═════════════════════════════════════════════");
-        System.out.println("Client   : " + vente.getClient());
-        System.out.println("Téléphone  : " + vente.getClient().getNumero());
-        System.out.println("═════════════════════════════════════════════");
-        System.out.println("DÉSIGNATION          QTÉ    PRIX U   TOTAL");
-        for (VentePiece vp : vente.getligneVente()) {
-            System.out.println(vp.getPiece() + " | " + vp.getQuantite() + " | " + vp.getprixUnitaire() + " | " + vp.calculerSousTotal());
-        }
-        System.out.println("═════════════════════════════════════════════");
-        System.out.println("TOTAL À PAYER        : " + vente.calculerTotal());
-        System.out.println("═════════════════════════════════════════════");
-    }
+    public void genererFacture() {
+
+        System.out.println("==================================================");
+        System.out.println("              AFRICA PIÈCES DÉTACHÉES");
+        System.out.println("              Votre spécialiste automobile");
+        System.out.println("              Dakar, Sénégal");
+        System.out.println("==================================================");
+
+        System.out.println("FACTURE N° : FAC-2026-" + String.format("%05d", getIdFacture()));
+        System.out.println("DATE       : " + getDateFacture());
+
+        System.out.println("--------------------------------------------------");
+
+        System.out.println("CLIENT");
+        System.out.println("Nom        : "
+                + vente.getClient().getNom()
+                + " "
+                + vente.getClient().getPrenom());
+
+        System.out.println("Téléphone  : "
+                + vente.getClient().getNumero());
+
+        System.out.println("--------------------------------------------------");
+}
 
     
 }
